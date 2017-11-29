@@ -3,21 +3,26 @@
 ## Usage
 
 **HTML**
+Create a div element
 ```html
-<ul class="foo">
-    <li></li>
-</ul>
+<div class="enjoy"></div>
 ```
 
 **JS**
-<script>
-$('.foo').carousel(options);
-</script>
+Call carousel method with the element
+```javascript
+$('.enjoy').carousel(options);
+```
 
 ## Options
-
+```javascript
 {
-   interval: 5000, //间隔切换时间,
-   duration: 1200, //切换持续时间
+    imgList: [      //图片来源
+        '/abc',
+        '/abc'
+    ],
+    interval: 5000, //间隔切换时间,
+    duration: 1200, //切换持续时间
 }
+```
 
