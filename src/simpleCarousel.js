@@ -1,6 +1,11 @@
-(function ($) {
+;(function ($) {
     $.fn.extend({
-        carousel: function(){
+        carousel: function(options){
+            var defaults = {
+                interval: 5000,
+                duration: 1200
+            }
+            var settings = $.extend(defaults,options);
             $carousel = this;
             var carouselWidth = $carousel.innerWidth(),
                 carouselHeight = $carousel.innerHeight(),
@@ -10,7 +15,7 @@
                 nextShow;
         
             function moveFoward() {
-                $carousel.children('li').eq(currentShow).animate({ 'left': '0px' });
+                $carousel.children('li').eq(currentShow).animate({ 'left': '0px' }, settings.duration);
                 if (currentShow == 0) {
                     prevShow = carouselLength - 1;
                 } else {
@@ -26,12 +31,12 @@
                     //set currentShow for next interval
                     currentShow ++;
                 }
-                $carousel.children('li').eq(prevShow).animate({ 'left': -carouselWidth + 'px' });
+                $carousel.children('li').eq(prevShow).animate({ 'left': -carouselWidth + 'px' }, settings.duration);
                 $carousel.children('li').eq(nextShow).css({ 'left': carouselWidth + 'px' });
             }
         
             function moveBackward () {
-                $carousel.children('li').eq(currentShow).animate({'left':'0px'});
+                $carousel.children('li').eq(currentShow).animate({'left':'0px'}, settings.duration);
                 console.log('current',currentShow, 'previous',prevShow, 'next',nextShow)
                 if(currentShow == carouselLength - 1){
                     prevShow = 0;
@@ -47,7 +52,7 @@
                     //set currentShow for next interval
                     currentShow -- ;
                 }
-                $carousel.children('li').eq(prevShow).animate({'left': carouselWidth + 'px'});
+                $carousel.children('li').eq(prevShow).animate({'left': carouselWidth + 'px'}, settings.duration);
                 $carousel.children('li').eq(nextShow).css({'left': -carouselWidth + 'px'});
             }
         
@@ -58,11 +63,13 @@
         
             function triggerBackward(){
                 clearInterval(carouselInterval);
-                
+                moveBackward();
             }
         
             moveFoward();
-            var carouselInterval = setInterval(moveFoward, 5000);
+            var carouselInterval = setInterval(moveFoward, settings.interval);
+
+            return this;
         }
     });
     
