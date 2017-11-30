@@ -33,7 +33,7 @@
             var settings = $.extend(defaults, options);
             var sliderWidth = $slider.innerWidth(),
                 sliderHeight = $slider.innerHeight(),
-                sliderLength = $slider.children('slider-item').length;
+                sliderLength = $slider.children('slider-item').length,
                 currentShow = 0,
                 prevShow,
                 nextShow;
