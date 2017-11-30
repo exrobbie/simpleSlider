@@ -2,7 +2,7 @@
     $.fn.extend({
         slider: function (options) {
             var $slider = this;
-            $.each(options.imgList, function (index, item) {
+            $.each(options.imgSrc, function (index, item) {
                 $slider.children('.slider-item').eq(index).css({"background": "url(" + item + ") center no-repeat"});
             });
 
