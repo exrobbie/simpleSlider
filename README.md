@@ -1,17 +1,20 @@
-# simpleCarousel
+# simpleSlider
 
 ## Usage
 
 **HTML**
 Create a div element
 ```html
-<div class="enjoy"></div>
+<ul>
+    <li></li>
+    <li></li>
+</ul>
 ```
 
 **JS**
 Call carousel method with the element
 ```javascript
-$('.enjoy').carousel(options);
+$('.enjoy').slider(options);
 ```
 
 ## Options
