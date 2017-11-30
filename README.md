@@ -5,9 +5,9 @@
 **HTML**
 Create a div element
 ```html
-<ul>
-    <li></li>
-    <li></li>
+<ul class="simpleSlider">
+    <li class="slider-item"></li>
+    <li class="slider-item"></li>
 </ul>
 ```
 
