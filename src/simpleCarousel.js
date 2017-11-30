@@ -3,7 +3,7 @@
         slider: function (options) {
             var $slider = this;
             $.each(options.imgList, function (index, item) {
-                $slider.children('li').eq(index).css({"background": "url(" + item + ") center no-repeat"});
+                $slider.children('.slider-item').eq(index).css({"background": "url(" + item + ") center no-repeat"});
             });
 
             $slider.css({
@@ -15,7 +15,7 @@
                 margin: '0'
             });
 
-            $slider.children('li').css({
+            $slider.children('.slider-item').css({
                 position: 'absolute',
                 top: '0',
                 left: '0',
@@ -33,13 +33,13 @@
             var settings = $.extend(defaults, options);
             var sliderWidth = $slider.innerWidth(),
                 sliderHeight = $slider.innerHeight(),
-                sliderLength = options.imgList.length,
+                sliderLength = $slider.children('slider-item').length;
                 currentShow = 0,
                 prevShow,
                 nextShow;
 
             function moveFoward() {
-                $slider.children('li').eq(currentShow).animate({ 'left': '0px' }, settings.duration);
+                $slider.children('.slider-item').eq(currentShow).animate({ 'left': '0px' }, settings.duration);
                 if (currentShow == 0) {
                     prevShow = sliderLength - 1;
                 } else {
@@ -55,12 +55,12 @@
                     //set currentShow for next interval
                     currentShow++;
                 }
-                $slider.children('li').eq(prevShow).animate({ 'left': -sliderWidth + 'px' }, settings.duration);
-                $slider.children('li').eq(nextShow).css({ 'left': sliderWidth + 'px' });
+                $slider.children('.slider-item').eq(prevShow).animate({ 'left': -sliderWidth + 'px' }, settings.duration);
+                $slider.children('.slider-item').eq(nextShow).css({ 'left': sliderWidth + 'px' });
             }
 
             function moveBackward() {
-                $slider.children('li').eq(currentShow).animate({ 'left': '0px' }, settings.duration);
+                $slider.children('.slider-item').eq(currentShow).animate({ 'left': '0px' }, settings.duration);
                 console.log('current', currentShow, 'previous', prevShow, 'next', nextShow)
                 if (currentShow == sliderLength - 1) {
                     prevShow = 0;
@@ -76,8 +76,8 @@
                     //set currentShow for next interval
                     currentShow--;
                 }
-                $slider.children('li').eq(prevShow).animate({ 'left': sliderWidth + 'px' }, settings.duration);
-                $slider.children('li').eq(nextShow).css({ 'left': -sliderWidth + 'px' });
+                $slider.children('.slider-item').eq(prevShow).animate({ 'left': sliderWidth + 'px' }, settings.duration);
+                $slider.children('.slider-item').eq(nextShow).css({ 'left': -sliderWidth + 'px' });
             }
 
             function triggerFoward() {
